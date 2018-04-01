@@ -44,13 +44,13 @@ class Module implements ModuleInterface
 
             $app->group('/users', function () use ($app) {
                 $app->get('/register',
-                    '\MartynBiz\Slim\Module\Register\Controller\UsersController:register')->setName('register_users_register');
+                    '\MartynBiz\Slim\Module\Register\Controller\RegisterController:register')->setName('register_users_register');
                 $app->post('/register',
-                    '\MartynBiz\Slim\Module\Register\Controller\UsersController:post')->setName('register_users_post');
+                    '\MartynBiz\Slim\Module\Register\Controller\RegisterController:post')->setName('register_users_post');
                 $app->get('/resetpassword',
-                    '\MartynBiz\Slim\Module\Register\Controller\UsersController:resetpassword')->setName('register_users_reset_password');
+                    '\MartynBiz\Slim\Module\Register\Controller\RegisterController:resetpassword')->setName('register_users_reset_password');
                 $app->post('/resetpassword',
-                    '\MartynBiz\Slim\Module\Register\Controller\UsersController:resetpassword')->setName('register_users_reset_password_post');
+                    '\MartynBiz\Slim\Module\Register\Controller\RegisterController:resetpassword')->setName('register_users_reset_password_post');
             });
         });
         // ->add(new Auth\Middleware\RememberMe($container));

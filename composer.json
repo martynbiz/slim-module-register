@@ -1,5 +1,5 @@
 {
-    "name": "martynbiz/slim-module-auth",
+    "name": "martynbiz/slim-module-register",
     "type": "library",
     "keywords": ["slim", "modules"],
     "license": "MIT",
@@ -20,6 +20,10 @@
         },
 	    {
             "url": "https://github.com/martynbiz/slim-module-core.git",
+            "type": "git"
+        },
+	    {
+            "url": "https://github.com/martynbiz/slim-module-auth.git",
             "type": "git"
         }
     ],
