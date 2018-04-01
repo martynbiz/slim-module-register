@@ -25,7 +25,7 @@ class RegisterController extends \MartynBiz\Slim\Module\Core\Controller\BaseCont
         // validate form data
 
         // our simple custom validator for the form
-        $validator = new AuthValidator( $container['martynbiz-register.model.user'] );
+        $validator = new RegisterValidator( $container['martynbiz-auth.model.user'] );
         $validator->setData($params);
         $i18n = $container->get('i18n');
 
@@ -41,7 +41,7 @@ class RegisterController extends \MartynBiz\Slim\Module\Core\Controller\BaseCont
         $validator->check('email')
             ->isNotEmpty( $i18n->translate('email_missing') )
             ->isEmail( $i18n->translate('email_invalid') )
-            ->isUniqueEmail( $i18n->translate('email_not_unique'), $container['martynbiz-register.model.user'] );
+            ->isUniqueEmail( $i18n->translate('email_not_unique'), $container['martynbiz-auth.model.user'] );
 
         // password
         $message = $i18n->translate('password_must_contain');
@@ -68,13 +68,13 @@ class RegisterController extends \MartynBiz\Slim\Module\Core\Controller\BaseCont
 
         if ($validator->isValid()) {
 
-            if ($user = $container['martynbiz-register.model.user']->create($params)) {
+            if ($user = $container['martynbiz-auth.model.user']->create($params)) {
 
                 // set meta entries (if given)
                 if (isset($params['source'])) $user->setMeta('source', $params['source']);
 
                 // set session attributes w/ backend (method of signin)
-                $container->get('auth')->setAttributes( $user->toArray() );
+                $container->get('martynbiz-auth.auth')->setAttributes( $user->toArray() );
 
                 // // send welcome email
                 // $container->get('mail_manager')->sendWelcomeEmail($user);
