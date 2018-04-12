@@ -38,7 +38,7 @@ class Module implements ModuleInterface
     public function initRoutes(App $app)
     {
         $container = $app->getContainer();
-        $settings = $container->get('settings')['register'];
+        $settings = $container->get('settings')['martynbiz-register'];
 
         $app->group($settings['base_path'], function () use ($app, $container) {
 
