@@ -49,8 +49,6 @@ class Module implements ModuleInterface
                     '\MartynBiz\Slim\Module\Register\Controller\RegisterController:post')->setName('register_post');
             });
         });
-        // ->add(new Auth\Middleware\RememberMe($container));
-        // ->add(new Core\Middleware\Csrf($container));
     }
 
     /**

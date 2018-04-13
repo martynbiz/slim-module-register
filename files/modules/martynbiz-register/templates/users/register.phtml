@@ -30,7 +30,7 @@
                     <input name="agreement" type="checkbox"> <?= $this->translate('read_tc_agreement') ?>
                 </label>
 
-                <input type="hidden" name="<?= $this->csrf_name ?>" value="<?= $this->csrf_value ?>">
+                <?= $this->insert('martynbiz-core::partials/csrf_fields.phtml') ?>
 
                 <input type="text" class="more_info" name="more_info" value="" style="position: absolute; left: -9999px">
 
