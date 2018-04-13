@@ -3,8 +3,9 @@ namespace MartynBiz\Slim\Module\Register\Controller;
 
 use MartynBiz\Slim\Module\Auth\Model\User;
 use MartynBiz\Slim\Module\Register\RegisterValidator;
+use MartynBiz\Slim\Module\Core\Controller as CoreController;
 
-class RegisterController extends \MartynBiz\Slim\Module\Core\Controller\BaseController
+class RegisterController extends CoreController
 {
     public function register($request, $response, $args)
     {
@@ -20,7 +21,7 @@ class RegisterController extends \MartynBiz\Slim\Module\Core\Controller\BaseCont
     {
         $params = $request->getParams();
         $container = $this->getContainer();
-        $settings = $container->get('settings')['auth'];
+        $settings = $container->get('settings')['martynbiz-register'];
 
         // validate form data
 
@@ -80,7 +81,7 @@ class RegisterController extends \MartynBiz\Slim\Module\Core\Controller\BaseCont
                 // $container->get('mail_manager')->sendWelcomeEmail($user);
 
                 // redirect
-                return $response->withRedirect( $container->get('router')->pathFor($settings['redirect_after_register']) );
+                return $response->withRedirect( $container->get('router')->pathFor( $settings['redirect_after_register']) );
 
             } else {
                 $errors = $user->errors();
