@@ -48,7 +48,8 @@ class Module implements ModuleInterface
                 $app->post('/register',
                     '\MartynBiz\Slim\Module\Register\Controller\RegisterController:post')->setName('register_post');
             });
-        });
+        })
+        ->add($container->get('csrf'));
     }
 
     /**
